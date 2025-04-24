@@ -14,4 +14,3 @@ https://anderfe47.site/src/html/projects/multiplayer_asteriods_game.html
 https://anderfe47.site/src/html/projects/game_ai.html
 https://anderfe47.site/src/html/projects/chip-8_emulator.html
 https://anderfe47.site/src/html/projects/memory_manager.html
-https://anderfe47.site/data/ander.fernandez_CV.pdf
