@@ -1,0 +1,37 @@
+
+body{
+    
+    background-color: aquamarine;
+}
+
+#webHeader{
+    background-color: aliceblue;
+}
+
+#webMainContent{
+    background-color: rgb(205, 45, 211);
+    margin-left: 300px;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+#webFooter{
+    
+    margin-top: 20px;
+}
+#webMainBrowse{
+    background-color: rgb(87, 133, 173);
+}
+
+li{
+    background-color: blanchedalmond;
+    display: inline;
+}
+aside{
+    background-color: rgb(212, 135, 18);
+    float: left;
+    clear:both;
+    margin-top: 20px;
+    margin-left: 5px;
+    padding-left: 25px;
+    height: 1065px;
+}
