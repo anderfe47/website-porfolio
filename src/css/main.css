@@ -1617,6 +1617,43 @@ input, select, textarea {
 			margin-bottom: 0;
 		}
 
+		.boxLeft {
+			background: #ffffff;
+			border-bottom: solid 1px #ccc;
+			text-align: left;
+			padding: 2.75em 1.75em 2.75em 1.75em;
+		}
+	
+		.boxLeft .image.featured {
+			position: relative;
+			width: auto;
+			left: 1.75em;
+			top: 1.75em;
+			margin: -4.5em 0 4.25em -3.5em;
+		}
+
+		.boxLeft.post header {
+			padding-top: 1em;
+			text-align: center;
+			margin: 0 0 2em 0;
+		}
+
+		.boxLeft.post h2 {
+			font-size: 2.5em;
+			letter-spacing: -0.015em;
+		}
+		.boxLeft.post h3 { 
+			text-align: left;
+		}
+
+		.boxLeft.post header > p {
+			margin-top: 1.25em;
+			font-size: 1.25em;
+		}
+
+		.boxLeft footer ul.actions {
+			margin-bottom: 0;
+		}
 /* Button */
 
 	input[type="button"],

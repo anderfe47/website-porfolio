@@ -9,6 +9,11 @@
 		<title>Ander Fernandez | Radiance Cascades</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="author" content="Ander Fernandez Lafuente"/>
+
+		<meta name="description" content="Summary of radiance cascades implementation.">
+		<meta name="keywords" content="DigiPen, RTIS, Graphics, RC, 2D, Radiance Cascades, C++, Shader programming, OpenGL, Graphics pipeline, GLSL"/>
+
 		<link rel="stylesheet" href="../../css/main.css" />
 	</head>
 	<body class="homepage is-preload">
@@ -32,15 +37,82 @@
                 <div class="container">
 
                     <!-- Content -->
-                        <article class="box post">
-                            <header>
-                                <h2>2D Radiance Cascades</h2>
-                                <p>Build in progress</p>
-								<p> <progress></progress> </p>
+                        <article class="boxLeft post">
+                            <header class="boxLeft post">
+                                <h2>2D Radiance Cascades</h2> 
+								<header></header>
                             </header>
-                            <header></header>
                             <a href="#" class="image featured"><img src="../../../data/images/RC_rainbow.png" alt="" /></a>
-                        </article>
+							<p>
+								Final project for the Advanced Rendering Techniques class. I implemented Radiance Cascades (RCs) and wrote a report introducing 2D Radiance Cascades, 
+								a global illumination technique that simulates penumbra effects. The report covers the fundamental principles of this
+								technique and provides an overview of the implementation details. Additionally, it discusses issues encountered during the implementation 
+								and offers some optimizations to improve both performance and visual quality. The 2D framework was created from  scrath using C++ and OpenGL.
+							</p>
+							<section>
+								<header>
+									<h3>Small introduction</h3>
+								</header>
+								<p>
+									Radiance cascades, introduced by Alexander Sannikov, are a memory-efficient data structure designed for real-time global
+									illumination calculations. This structure decomposes a radiance field into multiple cascades, with each cascade storing
+									different radiance information. The lowest cascade captures high spatial frequencies, while higher cascades focus on lower
+									spatial frequencies and increased angular resolution. This is based on the Penumbra condition, which states that closer light
+									sources need higher linear resolution, while distant sources require higher angular resolution.
+
+								</p>
+								<p>
+									In practice, radiance cascades store radiance values in probes across different cascades. The lowest cascade (cascade 0)
+									has the highest spatial resolution and is denser in probes to capture fine details. Higher cascades reduce the number of
+									probes while improving angular resolution to capture light from more distant parts of the scene.
+								</p>
+							</section>
+							<section>
+								<header>
+									<h3>Steps followed</h3>
+								</header>
+								<p>
+									To implement the demo, I followed the approach outlined by <a href="https://jason.today/rc" target="_blank">JasonToday</a>. The process began by creating a drawing
+									canvas where mouse positions and clicks are tracked to paint fragments. On the fragment shader, the screen space position
+									is calculated using the UV coordinates, and if the position lies within the segment, the fragment is painted. The canvas
+									supports loading scenes with custom screen resolutions and shapes, serving as a basic framework for drawing, as shown in
+									Figure.
+								</p>
+								<a href="#" class="image"><img src="../../../data/images/RC_resolution.png" alt="" /></a>
+								<p>
+									Next, I implemented optimizations for the distance field using the Jumping Flood Algorithm (JFA). The painted pixels are
+									stamped onto a new texture, called "jfaSeed", and the algorithm propagates the distance field by iterating through multiple
+									passes, gradually converging on the closest painted pixel. This approach uses a ping-pong technique to alternate between
+									textures during the passes, as shown in Figure ~\ref{fig:Image3}. Once the JFA texture is generated, the distance field
+									is computed by calculating the distance between each UV coordinate and the closest painted pixel.
+
+								</p>
+								<a href="#" class="image"><img src="../../../data/images/RC_jfa.png" alt="" /></a>
+								<p>
+									Finally, to take advantage of the Penumbra hypothesis for global illumination, I implemented radiance cascades with varying
+									spatial and angular resolutions. Each cascade has a specific probe count, with higher cascades reducing probe density but
+									increasing angular resolution. The radiance is accumulated through ray marching, using the distance field to find the nearest
+									surface. During the rendering, the current cascade is merged with the previous one by sampling from both cascades and averaging
+									the results. The entire process is illustrated in Figure ~\ref{fig:Image6}, where probe data and ray-marching details are shown.
+
+								</p>
+								<a href="#" class="image"><img src="../../../data/images/RC_cascades.png" alt="" /></a>
+							</section>
+							<section>
+								<header>
+									<h3>Conclusion</h3>
+								</header>
+								<p>
+									The implementation successfully models global illumination for a 2D scene using radiance cascades. The demo simulates 
+									light propagation and the penumbra effect. The results shown in the introductory figure demonstrate how this technique
+									simulates lighting, and how light propagation and soft shadowing can be achieved in real-time using this technique.
+								</p>
+								<p>
+									Future work will involve extending this technique to a 2D arcade game using Vulkan.
+								</p>
+							</section>
+
+						</article>
 
                 </div>
             </section>
