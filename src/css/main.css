@@ -1740,7 +1740,6 @@ input, select, textarea {
 		}
 
 /* Image */
-
 	.image {
 		display: inline-block;
 		outline: 0;
@@ -2196,14 +2195,14 @@ input, select, textarea {
 
 /* Banner YES*/  
 
-	#banner {
-		background: #000000;
+	#banner { 
+		background: #000000 url("../../data/images/craiyon.png");
 		background-position: center center;
 		background-size: auto 100%;
 		background-repeat: no-repeat;
 		text-align: center;
 		position: relative;
-		padding: 8em 0;
+		padding: 5em 0;
 		margin: 4em 0 0 0;
 	}
 

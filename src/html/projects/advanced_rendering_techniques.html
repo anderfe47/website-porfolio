@@ -9,6 +9,11 @@
 		<title>Ander Fernandez | Graphics Projects</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="author" content="Ander Fernandez Lafuente"/>
+
+		<meta name="description" content="Summary of various advenced rendering techniques.">
+		<meta name="keywords" content="DigiPen, RTIS, Graphics, Reder, C++, Shader programming, OpenGL, graphics pipeline, GLSL"/>
+
 		<link rel="stylesheet" href="../../css/main.css" />
 
 		<style>
@@ -18,6 +23,8 @@
 			  height: 360px;
 			  overflow: hidden;
 			  cursor: ew-resize;
+			  margin: 0 auto;
+			  display: block;
 			}
 		
 			.MYimg-wrapper {
@@ -82,45 +89,75 @@
                 <div class="container">
 
                     <!-- Content -->
-
-					<article class="box post">
-						<header>
-							<h2>Advanced Rendering Techniques</h2>
-							<p>Build in progress</p>
-							<p> <progress></progress> </p>
+					<article class="boxLeft post">
+						<header class="boxLeft post">
+							<h2>Advanced Rendering Techniques</h2> 
+							<p>
+								Using a 3D framework created from scrath with C++ and OpenGL.
+							</p>
+							<header></header> 
 						</header>
-						<header></header> 
-					</article>
 
-					<section class="image">
-						<div class="MYcontainer" id="sliderContainer">
-							<div class="MYimg-wrapper MYimg-left">
-							  <img src="../../../data/images/SP_logo.ico" alt="Left Image">
-							</div>
-							<div class="MYimg-wrapper MYimg-right" id="rightImage">
-							  <img src="../../../data/images/3DBTG_logo.ico" alt="Right Image">
-							</div>
-							<div class="MYslider" id="sliderHandle"></div>
-						  </div>
-						  
-						  <script>
-							const container = document.getElementById('sliderContainer');
-							const rightImage = document.getElementById('rightImage');
-							const sliderHandle = document.getElementById('sliderHandle');
-						  
-							container.addEventListener('mousemove', (e) => {
-							  const rect = container.getBoundingClientRect();
-							  let offsetX = e.clientX - rect.left;
-							  let percentage = (offsetX / rect.width) * 100;
-						  
-							  // Constrain between 0% and 100%
-							  percentage = Math.max(0, Math.min(100, percentage));
-						  
-							  rightImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
-							  sliderHandle.style.left = `${percentage}%`;
-							});
-						  </script>
+					<section>
+						<header>
+							<h3>Deferred Rendering</h3>
+						</header>
+						<p>
+						</p>
 					</section>
+					<section>
+						<header>
+							<h3>Cascaded shadow maps</h3>
+						</header>
+						<p>
+						</p>
+						<a href="#" class="image"><img src="../../../data/images/ART_logo.ico" alt="" /></a>
+					</section>
+					<section>
+						<header>
+							<h3>Decals</h3>
+						</header>
+						<p>
+						</p>
+					</section>
+					<section>
+						<header>
+							<h3>Ambient Occlusion</h3>
+						</header>
+						<p>
+						</p>
+						<div>
+							
+							<div class="MYcontainer" id="sliderContainer">
+								<div class="MYimg-wrapper MYimg-left">
+								<img src="../../../data/images/gamepad_play.jpg" alt="Left Image">
+								</div>
+								<div class="MYimg-wrapper MYimg-right" id="rightImage">
+								<img src="../../../data/images/gamepad_xbox.jpg" alt="Right Image">
+								</div>
+								<div class="MYslider" id="sliderHandle"></div>
+							</div>
+						</div>
+						  
+						<script>
+						const container = document.getElementById('sliderContainer');
+						const rightImage = document.getElementById('rightImage');
+						const sliderHandle = document.getElementById('sliderHandle');
+						
+						container.addEventListener('mousemove', (e) => {
+							const rect = container.getBoundingClientRect();
+							let offsetX = e.clientX - rect.left;
+							let percentage = (offsetX / rect.width) * 100;
+						
+							// Constrain between 0% and 100%
+							percentage = Math.max(0, Math.min(100, percentage));
+						
+							rightImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+							sliderHandle.style.left = `${percentage}%`;
+						});
+						</script>
+					</section> 
+				</article>
 
                 </div>
             </section>
