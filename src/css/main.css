@@ -2206,26 +2206,32 @@ input, select, textarea {
 		margin: 4em 0 0 0;
 	}
 
-		#banner header { 
-			display: inline-block;
-			padding: 10.0em 5em;
-			border-radius: 5px;
-		}
+	#banner header { 
+		display: inline-block;
+		padding: 10.0em 5em;
+		border-radius: 5px;
+	}
 
-			#banner header h2 {
-				color: #fff;
-				font-weight: 700;
-				font-size: 4em;
-				margin: 0 0 0.65em 0;
-			}
+	#banner header h1 {
+		color: #fff;
+		font-weight: 700;
+		font-size: 4em;
+		margin: 0 0 0.65em 0;
+	}
+	#banner header h2 {
+		color: #fff;
+		font-weight: 700;
+		font-size: 4em;
+		margin: 0 0 0.65em 0;
+	}
 
-			#banner header p {
-				color: #d52349;
-				padding: 0;
-				font-style: normal;
-				margin: 0;
-				font-size: 1.5em;
-			}
+	#banner header p {
+		color: #d52349;
+		padding: 0;
+		font-style: normal;
+		margin: 0;
+		font-size: 1.5em;
+	}
 
 /* Intro */
 
