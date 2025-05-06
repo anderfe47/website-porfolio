@@ -34,10 +34,10 @@
                             </header>
 
 							<div style="text-align: center;">
-								<a href="#" class="image"><img src="../../../data/images/A4_Box_Transmission_AA.png" alt="" /></a>
+								<img src="../../../data/images/A4_Box_Transmission_AA.png" alt="" />
 							</div>
 
-							<p style="white-space: pre-line">Final project for the Ray Tracing class. I implemented Constructive Solid Geometry (CSGs) and wrote a report about the implementation.The report covered the principles of this technique and provided an overview of the implementation details. Additionally, it discusses issues encountered during the implementation and offers some optimizations to improve performance. The 3D framework was created from scrath using C++ and OpenGL through out the Raytracing subject.
+							<p style="white-space: pre-line">
 								For the final project in the Ray Tracing class, I implemented Constructive Solid Geometry (CSG) and wrote a report detailing the implementation.
 								The 3D framework was created from scratch throughout the Ray Tracing course using C++ and GLFW. All computation were don CPU side.
 							</p>
@@ -46,14 +46,46 @@
 									<h3>Small introduction</h3>
 								</header>
 								<p>
+									Constructive Solid Geometry (CSG) is a technique in computer graphics used to build complex shapes by combining simple geometric primitives using Boolean 
+									operations like union, intersection, and difference. In this project, I implemented CSG using ray casting, a method of tracing rays from the viewer’s 
+									perspective into a scene to determine visible surfaces. The implementation builds upon a basic ray tracer, enabling it to handle hierarchical CSG trees
+									and perform efficient set operations between intersected shapes.
+								</p>
+								<div style="text-align: center;">
+									<img src="../../../data/images/S_BSPHCY_CSG.png" alt="" />
+								</div>
+							</section>
+							
+							<section>
+								<header>
+									<h3>Steps followed</h3>
+								</header>
+								<p>
+									1. Modified intersection tests to retrieve entry and exit points (spans) for primitives.<br>
+									2. Implemented a parser to build CSG trees, where internal nodes represent Boolean operations and leaves represent geometric primitives.<br>
+									3. Designed span-combination logic based on Boolean rules for union, intersection, and difference.<br>
+									
+							<div style="text-align: center;">
+								<img src="../../../data/images/RayCombinations.png" alt="" />
+							</div>
+									4. Ensured correct handling of normals by adjusting direction based on the ray.<br>
+									5. Associated materials with intersection points for accurate shading.<br>
+									6. Rendered various CSG combinations to validate correctness and performance.
 								</p>
 							</section>
+							
 							<section>
 								<header>
 									<h3>Conclusion</h3>
 								</header>
 								<p>
+									This project successfully integrated Constructive Solid Geometry into a ray casting system, enabling the rendering of complex composite objects from basic
+									primitives. The implementation effectively handled recursive CSG trees, Boolean operations on spans, and the proper management of normals and materials.
+									The result is a rendering engine can render detailed and mathematically defined solid shapes.
 								</p>
+								<div style="text-align: center;">
+									<img src="../../../data/images/S_SPHSPH_CSG.png" alt="" />
+								</div>
 							</section>
                         </article>
 

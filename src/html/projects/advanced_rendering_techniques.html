@@ -15,8 +15,8 @@
 		<style>
 			.MYcontainer {
 			  position: relative;
-			  width: 540px;
-			  height: 360px;
+			  width: 900px;
+			  height: 600px;
 			  overflow: hidden;
 			  cursor: ew-resize;
 			  margin: 0 auto;
@@ -87,73 +87,112 @@
                     <!-- Content -->
 					<article class="boxLeft post">
 						<header class="boxLeft post">
-							<h2>Advanced Rendering Techniques</h2> 
-							<p>
-								Using a 3D framework created from scrath with C++ and OpenGL.
-							</p>
-							<p>Build in progress</p>
-							<p> <progress></progress> </p>
-							<header></header> 
+							<h2>Advanced Rendering Techniques</h2>
+							<header></header>
 						</header>
 
+						<a href="#" class="image featured"><img src="../../../data/images/AO.png" alt="" /></a>
+			
+						<p> In the <strong>Advanced Rendering Techniques</strong> class, I created a 3D rendering framework from scratch using <strong>C++</strong> and <strong>OpenGL</strong>.
+							Throughout the course, we covered a wide range of graphics topics and implemented several advanced techniques.
+							These included Deferred Shading, Cascaded Shadow Maps, Geometry, Tessellation and Compute Shaders, Reverse Depth, Physically Based Rendering (PBR), Ambient Occlusion,
+							Parallax Mapping, Image-Based Lighting, and an introduction to the Vulkan API. 
+						</p>
+							
+						<p> As part of the coursework, I implemented Deferred Shading, Cascaded Shadow Maps, Screen-Space Decals, Alchemy Ambient Occlusion, and, for the final project, a 2D Radiance Cascades system. </p>
+						
 					<section>
 						<header>
 							<h3>Deferred Rendering</h3>
 						</header>
-						<p>
-						</p>
+
+							<p>
+								Deferred rendering system separates geometry rendering from lighting. Instead of calculating lighting as each object is drawn, the system first stores surface 
+								data such as color, position, and normals into special textures known as <strong>G-buffers</strong> (geometry buffers). In a second pass, lighting is applied using this data,
+							    with optimizations to calculate lighting only for visible pixels. This setup made it much easier to handle scenes with many dynamic lights and later proved useful
+								for integrating additional effects like ambient occlusion and decals.
+							</p>
+
+							<div style="text-align: center;">
+								<video width="900" height="600" controls>
+									<source src="/data/videos/Museum.mp4" type="video/mp4">
+									Your browser does not support the video tag.
+								</video>
+							</div>
 					</section>
 					<section>
 						<header>
 							<h3>Cascaded shadow maps</h3>
 						</header>
 						<p>
+							To improve shadow quality in large outdoor scenes, I implemented Cascaded Shadow Maps (CSM) for directional lighting. This technique splits the camera’s view frustum
+							into multiple depth ranges (cascades), with each one using its own shadow map. That way, areas closer to the camera get higher-resolution shadows, while more distant
+							ares reduce resolution.
 						</p>
-						<a href="#" class="image"><img src="../../../data/images/ART_logo.ico" alt="" /></a>
+												<div style="text-align: center;">
+							<video width="900" height="600" controls>
+								<source src="/data/videos/Museum.mp4" type="video/mp4">
+								Your browser does not support the video tag.
+							</video>
+						</div>
+						
 					</section>
 					<section>
 						<header>
-							<h3>Decals</h3>
+							<h3>Screen Space Decals</h3>
 						</header>
 						<p>
+							Screen Space Decals bring more detail and realism to scenes like scratches, bullet holes, or dirt. Instead of modifying the actual geometry, decals are projected into
+							screen space based on the camera view, and then blended into the scene using the G-buffer data. This approach is lightweight and dynamic, it has low performance cost.
 						</p>
-					</section>
-					<section>
-						<header>
-							<h3>Ambient Occlusion</h3>
-						</header>
-						<p>
-						</p>
+						
 						<div>
 							
 							<div class="MYcontainer" id="sliderContainer">
 								<div class="MYimg-wrapper MYimg-left">
-								<img src="../../../data/images/gamepad_play.jpg" alt="Left Image">
+								<img src="../../../data/images/AO.png" alt="Left Image">
 								</div>
 								<div class="MYimg-wrapper MYimg-right" id="rightImage">
-								<img src="../../../data/images/gamepad_xbox.jpg" alt="Right Image">
+								<img src="../../../data/images/No_AO.png" alt="Right Image">
 								</div>
 								<div class="MYslider" id="sliderHandle"></div>
 							</div>
 						</div>
-						  
 						<script>
-						const container = document.getElementById('sliderContainer');
-						const rightImage = document.getElementById('rightImage');
-						const sliderHandle = document.getElementById('sliderHandle');
-						
-						container.addEventListener('mousemove', (e) => {
-							const rect = container.getBoundingClientRect();
-							let offsetX = e.clientX - rect.left;
-							let percentage = (offsetX / rect.width) * 100;
-						
-							// Constrain between 0% and 100%
-							percentage = Math.max(0, Math.min(100, percentage));
-						
-							rightImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
-							sliderHandle.style.left = `${percentage}%`;
-						});
+							const container = document.getElementById('sliderContainer');
+							const rightImage = document.getElementById('rightImage');
+							const sliderHandle = document.getElementById('sliderHandle');
+							
+							container.addEventListener('mousemove', (e) => {
+								const rect = container.getBoundingClientRect();
+								let offsetX = e.clientX - rect.left;
+								let percentage = (offsetX / rect.width) * 100;
+							
+								// Constrain between 0% and 100%
+								percentage = Math.max(0, Math.min(100, percentage));
+							
+								rightImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+								sliderHandle.style.left = `${percentage}%`;
+							});
 						</script>
+					</section>
+					<section>
+						<header>
+							<h3>Alchemy Screen-Space Ambient Obscurance
+							</h3>
+						</header>
+						<p>
+							To add more depth and realism to the scenes, I implemented Alchemy Ambient Occlusion. This algorithmn simulates the way light gets blocked in tight spaces, like corners.
+							It uses the geometry data stored in the G-buffers to darken areas where ambient light would naturally be occluded. The result is subtle but adds a lot to the atmosphere.
+						</p>
+						<div style="text-align: center;">
+							<video width="900" height="600" controls>
+								<source src="/data/videos/Museum.mp4" type="video/mp4">
+								Your browser does not support the video tag.
+							</video>
+						</div>
+						  
+
 					</section> 
 				</article>
 
