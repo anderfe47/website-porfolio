@@ -23,10 +23,9 @@ function loadNav(currentPage) {
       // Re-initialize Dropotron dropdown menu every time the nav is inserted
       setTimeout(() => {
         $('#nav > ul').dropotron({
-          alignment: 'center',
-          offsetY: -10,
           mode: 'fade',
-          noOpenerFade: true
+          noOpenerFade: true,
+          alignment: 'center'
         });
       }, 0); // Ensure it's applied right after the nav is inserted
 
