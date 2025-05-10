@@ -54,15 +54,50 @@
             <section id="main">
                 <div class="container">
 
+
                     <!-- Content -->
-                        <article class="box post">
-                            <header>
-                                <h2>3D Bezier Terrain Generator</h2>
-                                <p>Build in progress</p>
-								<p> <progress></progress> </p>
-                            </header>
-                            <header></header> 
-                        </article>
+					<article class="boxLeft post">
+						<header class="boxLeft post">
+							<h2>3D Bezier Terrain Generator</h2> 
+						</header>
+						<a href="#" class="image featured"><img src="../../../data/images/3DBTG.png" alt="" /></a>
+						<p>
+							Final project for MAT300 Curves and Surfaces class.
+						</p>
+						<p>
+						   This course introduced parameterized polynomial curves and surfaces, focusing on both theory and practical applications in computer graphics.
+						   Topics included polynomial bases, interpolation, polar forms, and key algorithms like de Casteljau and de Boor. We also explored parametric surfaces and 
+						   multivariate splines.
+						</p>
+						<section>
+							<header>
+								<h3>Small Introduction</h3>
+							</header>
+							<p>
+								This was a team-based project with four members. The 3D framework for the project was built from scratch using C++ and OpenGL. We developed the framework
+								around the concept of Bézier patches to enable terrain editing.
+							</p>
+						</section>
+						<section>
+							<header>
+								<h3>Summary of the Process</h3>
+							</header>
+							<p>
+								We started by designing how the framework was going to work and how we could define and implement the terrain and patches. First, I implemented and built the
+								graphics pipeline and the structure/workflow of the application. Once we had lines and a cube on screen, the team member responsible for the mathematical aspects
+								created the patches. Other members were responsible for loading the heightmap onto the control points of the Bézier patches, while another worked on the
+								functionality for controlling those points in the application. Once that was completed, we implemented extra features such as camera distance-based patch resolution
+								and a river that adapts its geometry to the surface of the mesh.
+							</p>
+						</section>
+						<div style="text-align: center;">
+							<video width="900" height="600" controls>
+								<source src="/data/videos/3DBTG.mp4" type="video/mp4">
+								Your browser does not support the video tag.
+							</video>
+						</div>
+					</article>
+
 
                 </div>
             </section>
