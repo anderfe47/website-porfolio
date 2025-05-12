@@ -53,8 +53,7 @@
             <section id="main">
                 <div class="container">
 
-                    <!-- Content -->
-					</article>
+                    <!-- Content --> 
 					<article class="boxLeft post">
 						<header class="boxLeft post">
 							<h2>Space Partitioning</h2> 
@@ -62,13 +61,17 @@
 						</header>
 						<a href="#" class="image featured"><img src="../../../data/images/craiyon.png" alt="" /></a>
 						<p>
-							
+							This is a collection of acceleration data structures I have implemented in various graphics projects. Some were used to optimize rendered scene objects,
+							while others helped minimize intersection checks with complex meshes.
+
 						</p>
 						<section>
 							<header>
 								<h3>Bounding Volume Hierarchy (BVH)</h3>
 							</header>
 							<p>
+								BVH is a tree structure where each node represents a bounding volume that encloses a subset of objects. It's commonly used in ray tracing and collision detection
+								to quickly discard large groups of objects that don’t intersect with a ray or volume.
 							</p>
 						</section>
 						<section>
@@ -76,6 +79,7 @@
 								<h3>Octrees</h3>
 							</header>
 							<p>
+								Octrees recursively subdivide 3D space into eight octants. They are especially useful in scenes with large empty spaces.
 							</p>
 						</section>
 						<section>
@@ -83,6 +87,7 @@
 								<h3>KD-trees</h3>
 							</header>
 							<p>
+								KD-trees are binary trees that split space along alternating axes. They are used for nearest neighbor searches and ray tracing.
 							</p>
 						</section>
 						<section>
@@ -90,6 +95,8 @@
 								<h3>Gilbert Johnson Keerthi (GJK)</h3>
 							</header>
 							<p>
+								GJK is an algorithm used to determine the intersection of convex shapes. It operates in Minkowski space and is both fast and accurate, it is widely used
+								in physics engines for real-time collision detection. As a drawbac it does not return intersecion information (time, depth...)
 							</p>
 						</section>
 					</article>
