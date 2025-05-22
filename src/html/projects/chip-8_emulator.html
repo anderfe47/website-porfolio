@@ -6,6 +6,58 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="icon" type="image/x-icon" href="/data/images/C8E_logo.ico">
 		<link rel="stylesheet" href="../../css/main.css" />
+		
+		<style>
+			.MYcontainer {
+			  position: relative;
+			  width: 600px;
+			  height: 400px;
+			  overflow: hidden;
+			  cursor: ew-resize;
+			  margin: 0 auto;
+			  display: block;
+			}
+		
+			.MYimg-wrapper {
+			  position: absolute;
+			  top: 0;
+			  left: 0;
+			  height: 100%;
+			  width: 100%;
+			}
+		
+			.MYimg-wrapper img {
+			  width: 100%;
+			  height: 100%;
+			  object-fit: cover;
+			  display: block;
+			}
+		
+			.MYimg-left {
+			  z-index: 1;
+			}
+		
+			.MYimg-right {
+			  z-index: 2;
+			  clip-path: inset(0 0 0 50%);
+			}
+			.MYslider {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 4px;
+			background: repeating-linear-gradient(
+				to bottom,
+				#ff5100,
+				#c73f00 6px,
+				transparent 6px,
+				transparent 12px
+			);
+			z-index: 3;
+			left: 50%;
+			transform: translateX(-50%);
+			}
+		  </style>
 	</head>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
@@ -87,6 +139,51 @@
 							<header>
 							</header>
 						<a  class="image featured"><img src="../../../data/images/C8E.png" alt="" /></a>
+						</section>
+												<section>
+							<header>
+								<h3>Other CS315 assignments</h3>
+							</header>
+							
+							<h4>Simple Intel x86 (32-bit) programming.</h3>
+							<p>
+								The goal of this assignment is to implement several functions in x86 assembly. This assignment was divided in 6 sub-problems. 
+							</p> 
+							<h4>Program optimization from low-level perspective using SIMD techniques.</h3>
+							<p>
+								The goal of this assignment was to implement an optimized version of the Sobel Filter, which is used in image processing filter for edge detection.
+								The purpose of edge detection is to identify points in the image where there are discontinuities or major shifts in colour change. This is useful for
+								applications such as feature extraction or face detection etc. For example, the following pictures show the effect of edge detection.
+							</p> 
+													<div>
+							
+							<div class="MYcontainer" id="sliderContainer">
+								<div class="MYimg-wrapper MYimg-left">
+								<img src="../../../data/images/chessboard.bmp" alt="Left Image">
+								</div>
+								<div class="MYimg-wrapper MYimg-right" id="rightImage">
+								<img src="../../../data/images/chessboard_basic.bmp" alt="Right Image">
+								</div>
+								<div class="MYslider" id="sliderHandle"></div>
+							</div>
+							</div>
+							<script>
+								const container = document.getElementById('sliderContainer');
+								const rightImage = document.getElementById('rightImage');
+								const sliderHandle = document.getElementById('sliderHandle');
+								
+								container.addEventListener('mousemove', (e) => {
+									const rect = container.getBoundingClientRect();
+									let offsetX = e.clientX - rect.left;
+									let percentage = (offsetX / rect.width) * 100;
+								
+									// Constrain between 0% and 100%
+									percentage = Math.max(0, Math.min(100, percentage));
+								
+									rightImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+									sliderHandle.style.left = `${percentage}%`;
+								});
+							</script>
 						</section>
 					</article>
                 </div>
