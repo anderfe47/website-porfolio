@@ -73,6 +73,13 @@
 								BVH is a tree structure where each node represents a bounding volume that encloses a subset of objects. It's commonly used in ray tracing and collision detection
 								to quickly discard large groups of objects that don’t intersect with a ray or volume.
 							</p>
+							
+							<div style="text-align: center;">
+								<video width="900" height="600" controls>
+									<source src="/data/videos/BVH.mp4" type="video/mp4">
+									Your browser does not support the video tag.
+								</video>
+							</div>
 						</section>
 						<section>
 							<header>
@@ -81,14 +88,25 @@
 							<p>
 								Octrees recursively subdivide 3D space into eight octants. They are especially useful in scenes with large empty spaces.
 							</p>
+							
+							<div style="text-align: center;">
+								<video width="900" height="600" controls>
+									<source src="/data/videos/Octree.mp4" type="video/mp4">
+									Your browser does not support the video tag.
+								</video>
+							</div>
 						</section>
 						<section>
 							<header>
 								<h3>KD-trees</h3>
 							</header>
 							<p>
-								KD-trees are binary trees that split space along alternating axes. They are used for nearest neighbor searches and ray tracing.
+								KD-trees are binary trees that split space along alternating axes. They are used for nearest neighbor searches and ray tracing. In the image below, I used KD-trees to 
+								optimize ray intersection with the mesh of the bunny, as it is heavy in polygons.
 							</p>
+							<div style="text-align: center;">
+								<img src="../../../data/images/A4_BunnyGlass_Diffuse_AA.png" alt="" />
+							</div>
 						</section>
 						<section>
 							<header>
