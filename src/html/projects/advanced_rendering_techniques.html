@@ -115,66 +115,9 @@
 					<article class="boxLeft post">
 						<header class="boxLeft post">
 							<h2>Advanced Rendering Techniques</h2>
-							<header></header>
 						</header>
-
-						<a href="#" class="image featured"><img src="../../../data/images/AO.png" alt="" /></a>
-			
-						<p> In the <strong>Advanced Rendering Techniques</strong> class, I created a 3D rendering framework from scratch using <strong>C++</strong> and <strong>OpenGL</strong>.
-							Throughout the course, we covered a wide range of graphics topics and implemented several advanced techniques.
-							These included Deferred Shading, Cascaded Shadow Maps, Geometry, Tessellation and Compute Shaders, Reverse Depth, Physically Based Rendering (PBR), Ambient Occlusion,
-							Parallax Mapping, Image-Based Lighting, and an introduction to the Vulkan API. 
-						</p>
-							
-						<p> As part of the coursework, I implemented Deferred Shading, Cascaded Shadow Maps, Screen-Space Decals, Alchemy Ambient Occlusion, and, for the final project, a 2D Radiance Cascades system. </p>
-						
-					<section>
-						<header>
-							<h3>Deferred Rendering</h3>
-						</header>
-
-							<p>
-								Deferred rendering system separates geometry rendering from lighting. Instead of calculating lighting as each object is drawn, the system first stores surface 
-								data such as color, position, and normals into special textures known as <strong>G-buffers</strong> (geometry buffers). In a second pass, lighting is applied using this data,
-							    with optimizations to calculate lighting only for visible pixels. This setup made it much easier to handle scenes with many dynamic lights and later proved useful
-								for integrating additional effects like ambient occlusion and decals.
-							</p>
-
-							<div style="text-align: center;">
-								<video width="900" height="600" controls>
-									<source src="/data/videos/" type="video/mp4">
-									Your browser does not support the video tag.
-								</video>
-							</div>
-					</section>
-					<section>
-						<header>
-							<h3>Cascaded shadow maps</h3>
-						</header>
-						<p>
-							To improve shadow quality in large outdoor scenes, I implemented Cascaded Shadow Maps (CSM) for directional lighting. This technique splits the camera’s view frustum
-							into multiple depth ranges (cascades), with each one using its own shadow map. That way, areas closer to the camera get higher-resolution shadows, while more distant
-							ares reduce resolution.
-						</p>
-												<div style="text-align: center;">
-							<video width="900" height="600" controls>
-								<source src="/data/videos/" type="video/mp4">
-								Your browser does not support the video tag.
-							</video>
-						</div>
-						
-					</section>
-					<section>
-						<header>
-							<h3>Screen Space Decals</h3>
-						</header>
-						<p>
-							Screen Space Decals bring more detail and realism to scenes like scratches, bullet holes, or dirt. Instead of modifying the actual geometry, decals are projected into
-							screen space based on the camera view, and then blended into the scene using the G-buffer data. This approach is lightweight and dynamic, it has low performance cost.
-						</p>
-						
+ 
 						<div>
-							
 							<div class="MYcontainer" id="sliderContainer">
 								<div class="MYimg-wrapper MYimg-left">
 								<img src="../../../data/images/AO.png" alt="Left Image">
@@ -202,6 +145,67 @@
 								sliderHandle.style.left = `${percentage}%`;
 							});
 						</script>
+						<header></header>
+
+						<p> In the <strong>Advanced Rendering Techniques</strong> class, I created a 3D rendering framework from scratch using <strong>C++</strong> and <strong>OpenGL</strong>.
+							Throughout the course, we covered a wide range of graphics topics and implemented several advanced techniques.
+							These included Deferred Shading, Cascaded Shadow Maps, Geometry, Tessellation and Compute Shaders, Reverse Depth, Physically Based Rendering (PBR), Ambient Occlusion,
+							Parallax Mapping, Image-Based Lighting, and an introduction to the Vulkan API. 
+						</p>
+							
+						<p> As part of the coursework, I implemented Deferred Shading, Cascaded Shadow Maps, Screen-Space Decals, Alchemy Ambient Occlusion, and, for the final project, a 2D Radiance Cascades system. </p>
+						
+					<section>
+						<header>
+							<h3>Deferred Rendering</h3>
+						</header>
+
+							<p>
+								Deferred rendering system separates geometry rendering from lighting. Instead of calculating lighting as each object is drawn, the system first stores surface 
+								data such as color, position, and normals into special textures known as <strong>G-buffers</strong> (geometry buffers). In a second pass, lighting is applied using this data,
+							    with optimizations to calculate lighting only for visible pixels. This setup made it much easier to handle scenes with many dynamic lights and later proved useful
+								for integrating additional effects like ambient occlusion and decals.
+							</p>
+
+							<div style="text-align: center;">
+								<video width="900" height="600" controls>
+									<source src="/data/videos/Defer_Bloom.mp4" type="video/mp4">
+									Your browser does not support the video tag.
+								</video>
+							</div>
+					</section>
+					<section>
+						<header>
+							<h3>Cascaded shadow maps</h3>
+						</header>
+						<p>
+							To improve shadow quality in large outdoor scenes, I implemented Cascaded Shadow Maps (CSM) for directional lighting. This technique splits the camera’s view frustum
+							into multiple depth ranges (cascades), with each one using its own shadow map. That way, areas closer to the camera get higher-resolution shadows, while more distant
+							ares reduce resolution.
+						</p>
+						<div style="text-align: center;">
+							<video width="900" height="600" controls>
+								<source src="/data/videos/CSM.mp4" type="video/mp4">
+								Your browser does not support the video tag.
+							</video>
+						</div>
+						
+					</section>
+					<section>
+						<header>
+							<h3>Screen Space Decals</h3>
+						</header>
+						<p>
+							Screen Space Decals bring more detail and realism to scenes like scratches, bullet holes, or dirt. Instead of modifying the actual geometry, decals are projected into
+							screen space based on the camera view, and then blended into the scene using the G-buffer data. This approach is lightweight and dynamic, it has low performance cost.
+						</p>
+						<div style="text-align: center;">
+							<video width="900" height="600" controls>
+								<source src="/data/videos/Decals.mp4" type="video/mp4">
+								Your browser does not support the video tag.
+							</video>
+						</div>
+						
 					</section>
 					<section>
 						<header>
@@ -214,7 +218,7 @@
 						</p>
 						<div style="text-align: center;">
 							<video width="900" height="600" controls>
-								<source src="/data/videos/" type="video/mp4">
+								<source src="/data/videos/AO.mp4" type="video/mp4">
 								Your browser does not support the video tag.
 							</video>
 						</div>
