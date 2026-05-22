@@ -19,40 +19,13 @@
 				<section id="header">
 
 					<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li class="current">
-								<a href="/src/html/games.html">GAMES</a>
-								<ul>
-									<li ><a href="/src/html/games/numbra.html">Numbra</a></li>
-									<li><a href="/src/html/games/chaos4sale.html">Chaos 4 sale</a></li>
-									<li><a href="/src/html/games/virtualmayhem.html">Virtual Mayhem</a></li>
-								</ul>
-							</li>
-				
-							<li ><a href="/index.html">ABOUT ME</a></li>
-				
-							<li>
-								<a href="/src/html/projects.html">PROJECTS</a>
-								<ul>
-									<li>
-										<a href="#">Graphics</a>
-										<ul>
-											<li><a href="/src/html/projects/radiance_cancades.html">2D Radiance Cascades</a></li>
-											<li><a href="/src/html/projects/advanced_rendering_techniques.html">Advanced Rendering Techniques</a></li>
-											<li><a href="/src/html/projects/raytracing_for_csgs.html">Raytracing for CSGs</a></li>
-											<li><a href="/src/html/projects/space_partitioning.html">Space Partitioning</a></li>
-										</ul>
-									</li>
-									<li><a href="/src/html/projects/3d_bezier_terrain_generator.html">3D Bezier Terrain Generator</a></li>
-									<li><a href="/src/html/projects/multiplayer_asteriods_game.html">Multiplayer Asteroids Game</a></li>
-									<li><a href="/src/html/projects/game_ai.html">Game AI</a></li>
-									<li><a href="/src/html/projects/chip-8_emulator.html">Chip-8 emulator</a></li>
-									<li><a href="/src/html/projects/memory_manager.html">Memory Manager</a></li>
-								</ul>
-							</li>
-						</ul>
-					</nav> 
+					<div id="nav-container"></div>
+
+					<script src="/src/js/nav.js"></script>
+
+					<script>
+						loadNav("games");
+					</script>
 
 					<!-- Banner -->
 					<section id="banner">
@@ -114,57 +87,8 @@
 								</section>
 							</div>
 						</div>
-					</section>
-
-				</section>
-
-			<!-- Main -->
-				<section id="main">
-					<div class="container">
-						<div class="row">
-							<div class="col-12">
-
-								<!-- Blog -->
-									<section>
-										<header class="major">
-											<h2>Some Projects</h2>
-										</header>
-										<div class="row">
-											<div class="col-6 col-12-small">
-												<section class="box">
-													<a  class="image"><img src="../../data/images/RC_logo.ico" alt="" /></a>
-													<header>
-														<h3>2D Radiance Cascades</h3> 
-													</header>
-													<p>A real-time 2D global illumination system that simulates the penumbra condition using radiance cancades.</p>
-													<footer>
-														<ul class="actions">
-															<li><a href="projects/radiance_cancades.html" class="button icon solid fa-file-alt">Continue Reading</a></li> 
-														</ul>
-													</footer>
-												</section>
-											</div>
-											<div class="col-6 col-12-small">
-												<section class="box">
-													<a  class="image"><img src="../../data/images/ART_logo.ico" alt="" /></a>
-													<header>
-														<h3>Advanced Rendering Techniques</h3> 
-													</header>
-													<p>A collection of rendering techniques including deferred rendering, cascaded shadows maps , post-processing effects and more.</p>
-													<footer>
-														<ul class="actions">
-															<li><a href="projects/advanced_rendering_techniques.html" class="button icon solid fa-file-alt">Continue Reading</a></li> 
-														</ul>
-													</footer>
-												</section>
-											</div>
-										</div>
-									</section>
-
-							</div>
-						</div>
-					</div>
-				</section>
+					</section> 
+				</section> 
 
 			<!-- Footer -->
   			<div id="footer-container"></div>

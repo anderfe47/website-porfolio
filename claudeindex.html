@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Ander Fernandez Lafuente" />
+  <meta name="description" content="Portfolio of Ander Fernandez, a computer science and graphics programmer." />
+  <title>Ander Fernandez — Graphics & Systems Programmer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #f5f3ee;
+      --bg2:       #eeece7;
+      --bg3:       #e5e3dd;
+      --surface:   #ffffff;
+      --line:      rgba(0,0,0,0.08);
+      --line2:     rgba(0,0,0,0.15);
+      --text:      #1a1a18;
+      --muted:     #7a7870;
+      --accent:    #2a5c3f;
+      --accent2:   #1d3f6e;
+      --accentlt:  #e8f2ec;
+      --tag-bg:    rgba(42,92,63,0.09);
+      --tag-c:     #2a5c3f;
+      --font-d:    'Syne', sans-serif;
+      --font-m:    'DM Mono', monospace;
+      --r:         6px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-m);
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 56px;
+      background: rgba(245,243,238,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line2);
+    }
+
+    .nav-logo {
+      font-family: var(--font-d); font-weight: 800; font-size: 1.05rem;
+      color: var(--accent); text-decoration: none; letter-spacing: 0.03em;
+    }
+
+    .nav-links { display: flex; gap: 0; list-style: none; align-items: center; }
+
+    .nav-item { position: relative; }
+
+    .nav-item > a {
+      display: flex; align-items: center; gap: 4px;
+      color: var(--muted); text-decoration: none;
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0 1rem; height: 56px;
+      transition: color 0.15s;
+      white-space: nowrap;
+    }
+
+    .nav-item > a:hover, .nav-item:hover > a { color: var(--text); }
+
+    .nav-caret { font-size: 0.6rem; opacity: 0.5; transition: transform 0.2s; }
+    .nav-item:hover .nav-caret { transform: rotate(180deg); }
+
+    /* dropdown */
+    .nav-dropdown {
+      position: absolute; top: 100%; left: 0;
+      background: var(--surface);
+      border: 1px solid var(--line2);
+      border-radius: var(--r);
+      min-width: 200px;
+      padding: 0.5rem 0;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      opacity: 0; pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity 0.18s, transform 0.18s;
+      z-index: 300;
+    }
+
+    .nav-item:hover .nav-dropdown,
+    .nav-item:focus-within .nav-dropdown {
+      opacity: 1; pointer-events: all; transform: translateY(0);
+    }
+
+    .nav-dropdown a {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.55rem 1rem;
+      font-size: 0.75rem; color: var(--muted);
+      text-decoration: none; letter-spacing: 0.04em;
+      transition: background 0.12s, color 0.12s;
+    }
+
+    .nav-dropdown a:hover { background: var(--bg2); color: var(--text); }
+
+    .nav-dropdown .dd-year {
+      font-size: 0.6rem; color: var(--muted); opacity: 0.7;
+    }
+
+    /* hamburger */
+    .nav-burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-burger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text); margin: 4px 0;
+      transition: all 0.25s;
+    }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 56px 0 0;
+      background: var(--bg); z-index: 190;
+      flex-direction: column; padding: 2rem;
+      gap: 0; overflow-y: auto;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mob-link {
+      display: block; padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--font-d); font-weight: 700; font-size: 1.1rem;
+      text-decoration: none; color: var(--text);
+    }
+
+    .mob-sub { padding: 0.5rem 0 0.5rem 1rem; }
+
+    .mob-sub a {
+      display: block; padding: 0.45rem 0;
+      font-family: var(--font-m); font-size: 0.8rem; font-weight: 300;
+      color: var(--muted); text-decoration: none; letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .nav-burger { display: block; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+      padding: 0 3rem 5.5rem;
+      border-bottom: 1px solid var(--line2);
+      margin-top: 56px;
+      overflow: hidden;
+    }
+
+    .hero-bg-text {
+      position: absolute; bottom: -0.05em; right: -0.02em;
+      font-family: var(--font-d); font-weight: 800;
+      font-size: clamp(10rem, 22vw, 22rem);
+      line-height: 1; letter-spacing: -0.03em;
+      color: rgba(0,0,0,0.04);
+      pointer-events: none; user-select: none;
+      white-space: nowrap;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1.25rem;
+      opacity: 0; animation: fadeUp 0.5s 0.1s ease forwards;
+    }
+
+    .hero-name {
+      font-family: var(--font-d); font-weight: 800;
+      font-size: clamp(3rem, 8.5vw, 7.5rem);
+      line-height: 0.95; letter-spacing: -0.025em; color: var(--text);
+      opacity: 0; animation: fadeUp 0.55s 0.25s ease forwards;
+    }
+
+    .hero-name em { color: var(--accent); font-style: normal; }
+
+    .hero-sub {
+      margin-top: 2rem; max-width: 560px;
+      color: var(--muted); font-size: 0.85rem; line-height: 1.85;
+      opacity: 0; animation: fadeUp 0.55s 0.4s ease forwards;
+    }
+
+    .hero-ctas {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem;
+      justify-content: center;
+      opacity: 0; animation: fadeUp 0.55s 0.55s ease forwards;
+    }
+
+    .btn {
+      display: inline-block; padding: 0.65rem 1.5rem;
+      font-family: var(--font-m); font-size: 0.72rem; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; border-radius: var(--r);
+      transition: all 0.18s; cursor: pointer;
+    }
+
+    .btn-primary { background: var(--accent); color: #fff; border: 1.5px solid var(--accent); }
+    .btn-primary:hover { background: #1e4530; border-color: #1e4530; }
+
+    .btn-ghost { background: transparent; color: var(--text); border: 1.5px solid var(--line2); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; right: 3rem;
+      font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted); writing-mode: vertical-rl;
+      opacity: 0; animation: fadeIn 0.5s 1s ease forwards;
+    }
+
+    /* ── SECTION ── */
+    section {
+      padding: 6rem 3rem; border-bottom: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .section-header {
+      display: flex; align-items: baseline; gap: 1rem; margin-bottom: 3.5rem;
+      justify-content: center;
+    }
+
+    .section-num { font-size: 0.62rem; letter-spacing: 0.2em; color: var(--accent); }
+
+    .section-title {
+      font-family: var(--font-d); font-weight: 700;
+      font-size: clamp(1.4rem, 2.5vw, 2rem); letter-spacing: -0.02em;
+    }
+
+    @media (max-width: 700px) {
+      .hero { padding: 0 1.5rem 4.5rem; }
+      section { padding: 4rem 1.5rem; }
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: flex; flex-direction: column; align-items: center; gap: 2rem;
+      max-width: 640px; margin: 0 auto;
+    }
+
+    .about-bio { color: var(--muted); font-size: 0.88rem; line-height: 1.9; text-align: center; }
+    .about-bio a { color: var(--accent2); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+    .about-bio a:hover { border-color: var(--accent2); }
+    .about-bio p + p { margin-top: 1rem; }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--line2);
+      border: 1px solid var(--line2);
+      border-radius: var(--r);
+      overflow: hidden;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 900px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .projects-grid { grid-template-columns: 1fr; } }
+
+    .project-card {
+      background: var(--surface);
+      padding: 0;
+      text-decoration: none;
+      display: flex; flex-direction: column;
+      transition: background 0.18s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card:hover { background: var(--accentlt); }
+
+    .project-thumb {
+      width: 100%; height: 160px;
+      background: var(--bg2);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      transition: background 0.18s;
+    }
+
+    .project-thumb img {
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: 0.85; transition: opacity 0.2s, transform 0.3s;
+    }
+
+    .project-card:hover .project-thumb img { opacity: 1; transform: scale(1.03); }
+
+    .project-thumb-placeholder {
+      font-family: var(--font-d); font-weight: 800;
+      font-size: 2.5rem; color: var(--line2); letter-spacing: -0.03em;
+    }
+
+    .project-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; align-items: center; text-align: center; }
+
+    .project-cat {
+      font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+    }
+
+    .project-title {
+      font-family: var(--font-d); font-weight: 700; font-size: 1rem;
+      color: var(--text); line-height: 1.25;
+    }
+
+    .project-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.7; flex: 1; }
+
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.75rem; justify-content: center; }
+
+    .tag {
+      font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      background: var(--tag-bg); color: var(--tag-c);
+      border-radius: 3px;
+    }
+
+    .project-arrow {
+      position: absolute; top: 1rem; right: 1rem;
+      font-size: 0.85rem; color: var(--muted);
+      transition: all 0.18s; opacity: 0;
+    }
+
+    .project-card:hover .project-arrow { opacity: 1; transform: translate(2px, -2px); color: var(--accent); }
+
+    .project-wip {
+      opacity: 0.5; cursor: default; pointer-events: none;
+    }
+
+    /* ── GAMES ── */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px; background: var(--line2);
+      border: 1px solid var(--line2); border-radius: var(--r); overflow: hidden;
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    @media (max-width: 700px) { .games-grid { grid-template-columns: 1fr; } }
+
+    .game-card {
+      background: var(--surface); padding: 0;
+      text-decoration: none; display: flex; flex-direction: column;
+      transition: background 0.18s; overflow: hidden;
+    }
+
+    .game-card:hover { background: var(--accentlt); }
+
+    .game-thumb {
+      width: 100%; height: 140px;
+      background: var(--bg2);
+      display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid var(--line); overflow: hidden;
+    }
+
+    .game-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: opacity 0.2s, transform 0.3s; }
+    .game-card:hover .game-thumb img { opacity: 1; transform: scale(1.03); }
+
+    .game-body { padding: 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; }
+
+    .game-year {
+      font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent2);
+    }
+
+    .game-title {
+      font-family: var(--font-d); font-weight: 700; font-size: 1.1rem;
+      color: var(--text); margin-top: 0.25rem;
+    }
+
+    .game-desc { font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem; line-height: 1.65; }
+
+    /* ── TIMELINE / CAREER ── */
+    .timeline { position: relative; padding-left: 1.5rem; max-width: 640px; margin: 0 auto; text-align: left; }
+
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+      width: 1.5px; background: var(--line2);
+    }
+
+    .tl-item { position: relative; margin-bottom: 2.5rem; }
+
+    .tl-dot {
+      position: absolute; left: -1.5rem; top: 6px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--surface); border: 2px solid var(--accent);
+      transform: translateX(-4px);
+    }
+
+    .tl-dot.filled { background: var(--accent); }
+
+    .tl-date {
+      font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.3rem;
+    }
+
+    .tl-role {
+      font-family: var(--font-d); font-weight: 700; font-size: 1rem;
+      color: var(--text);
+    }
+
+    .tl-place {
+      font-size: 0.8rem; color: var(--accent2); margin-top: 0.1rem;
+    }
+
+    .tl-desc { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.7; }
+
+    .tl-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.6rem; }
+
+    /* ── CONTACT ── */
+    .contact-inner { max-width: 540px; margin: 0 auto; text-align: center; }
+
+    .contact-text {
+      font-family: var(--font-d); font-weight: 700;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 2rem;
+    }
+
+    .contact-text span { color: var(--accent); }
+
+    .contact-links { display: flex; flex-direction: column; gap: 0; }
+
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem;
+      color: var(--muted); text-decoration: none; font-size: 0.8rem;
+      letter-spacing: 0.04em; padding: 0.85rem 0;
+      border-bottom: 1px solid var(--line);
+      transition: color 0.15s;
+    }
+
+    .contact-link:hover { color: var(--accent); }
+
+    .contact-label {
+      font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted); min-width: 72px;
+    }
+
+    .contact-link:hover .contact-label { color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+    }
+
+    @media (max-width: 700px) {
+      footer { flex-direction: column; gap: 0.5rem; padding: 2rem 1.5rem; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">AFL</a>
+  <ul class="nav-links">
+    <li class="nav-item"><a href="#about">About</a></li>
+    <li class="nav-item"><a href="#projects">Projects</a></li>
+    <li class="nav-item">
+      <a href="#games">Games <span class="nav-caret">▾</span></a>
+      <div class="nav-dropdown">
+        <a href="src/html/games/numbra.html">
+          Numbra <span class="dd-year">Senior</span>
+        </a>
+        <a href="src/html/games/chaos4sale.html">
+          Chaos 4 Sale <span class="dd-year">Junior</span>
+        </a>
+        <a href="src/html/games/virtualmayhem.html">
+          Virtual Mayhem <span class="dd-year">Sophomore</span>
+        </a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="#career">Career</a></li>
+    <li class="nav-item"><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a class="mob-link" href="#about" onclick="closeMenu()">About</a>
+  <a class="mob-link" href="#projects" onclick="closeMenu()">Projects</a>
+  <div class="mob-link" style="cursor:default;">Games</div>
+  <div class="mob-sub">
+    <a href="src/html/games/numbra.html">Numbra</a>
+    <a href="src/html/games/chaos4sale.html">Chaos 4 Sale</a>
+    <a href="src/html/games/virtualmayhem.html">Virtual Mayhem</a>
+  </div>
+  <a class="mob-link" href="#career" onclick="closeMenu()">Career</a>
+  <a class="mob-link" href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg-text">AFL</div>
+  <p class="hero-eyebrow">// Graphics & Systems Programmer</p>
+  <h1 class="hero-name">Ander<br>Fernandez<br><em>Lafuente</em></h1>
+  <p class="hero-sub">BSc Computer Science in Real-Time Interactive Simulation — DigiPen Europe-Bilbao. Specializing in real-time rendering, GPU pipelines, and low-level systems in C++.</p>
+  <div class="hero-ctas">
+    <a href="#projects" class="btn btn-primary">View Projects</a>
+    <a href="#contact" class="btn btn-ghost">Get in touch</a>
+  </div>
+  <span class="hero-scroll">Scroll ↓</span>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">01 —</span>
+    <h2 class="section-title">About me</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-bio">
+      <p>I'm a software engineer focused on graphics programming and real-time systems. I completed my degree at <a href="https://www.digipen.es/" target="_blank">DigiPen Institute of Technology Europe-Bilbao</a>, where I specialized in applying mathematics, physics, and C++ to build renderers, game engines, and simulations from scratch.</p>
+      <p>I enjoy working close to the metal — whether that's building a custom memory manager, implementing pathfinding algorithms, or writing shaders for global illumination systems.</p>
+      <p>Currently exploring Vulkan for a custom 3D engine and looking for opportunities in graphics or engine programming.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-num">02 —</span>
+    <h2 class="section-title">Projects</h2>
+  </div>
+  <div class="projects-grid">
+
+    <a class="project-card" href="src/html/projects/radiance_cancades.html">
+      <span class="project-arrow">↗</span>
+      <div class="project-thumb">
+        <img src="https://anderfe47.site/data/images/RC_rainbow.png" alt="Radiance Cascades preview" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'project-thumb-placeholder\'>RC</span>'">
+      </div>
+      <div class="project-body">
+        <span class="project-cat">Graphics</span>
+        <h3 class="project-title">2D Radiance Cascades</h3>
+        <p class="project-desc">Real-time 2D global illumination simulating penumbra using radiance cascades — smooth lighting without raymarching artifacts.</p>
+        <div class="project-tags">
+          <span class="tag">C++</span><span class="tag">OpenGL</span><span class="tag">GLSL</span><span class="tag">GI</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="project-card" href="src/html/projects/advanced_rendering_techniques.html">
+      <span class="project-arrow">↗</span>
+      <div class="project-thumb">
+        <img src="https://anderfe47.site/data/images/ART_logo.ico" alt="Advanced Rendering preview" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'project-thumb-placeholder\'>ART</span>'">
+      </div>
+      <div class="project-body">
+        <span class="project-cat">Graphics</span>
+        <h3 class="project-title">Advanced Rendering Techniques</h3>
+        <p class="project-desc">Deferred rendering with cascaded shadow maps, post-processing effects, and multiple rendering passes.</p>
+        <div class="project-tags">
+          <span class="tag">Deferred</span><span class="tag">Shadows</span><span class="tag">Post-FX</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="project-card" href="src/html/projects/raytracing_for_csgs.html">
+      <span class="project-arrow">↗</span>
+      <div class="project-thumb">
+        <img src="https://anderfe47.site/data/images/CSG_logo.ico" alt="CSG Raytracing preview" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'project-thumb-placeholder\'>CSG</span>'">
+      </div>
+      <div class="project-body">
+        <span class="project-cat">Graphics</span>
+        <h3 class="project-title">Raytracing for CSGs</h3>
+        <p class="project-desc">Raytracer for Constructive Solid Geometry scenes with accurate lighting, shadows, reflections and refractions.</p>
+        <div class="project-tags">
+          <span class="tag">Raytracing</span><span class="tag">CSG</span><span class="tag">Optics</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="project-card" href="src/html/projects/space_partitioning.html">
+      <span class="project-arrow">↗</span>
+      <div class="project-thumb">
+        <img src="https://anderfe47.site/data/images/SP_logo.ico" alt="Space Partitioning preview" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'project-thumb-placeholder\'>SP</span>'">
+      </div>
+      <div class="project-body">
+        <span class="project-cat">Graphics / Algorithms</span>
+        <h3 class="project-title">Space Partitioning</h3>
+        <p class="project-desc">BVH trees and octrees for scene rendering optimization and broad-phase collision detection.</p>
+        <div class="project-tags">
+          <span class="tag">BVH</span><span class="tag">Octree</span><span class="tag">Collision</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="project-card" href="src/html/projects/3d_bezier_terrain_generator.html">
+      <span class="project-arrow">↗</span>
+      <div class="project-thumb">
+        <img src="https://anderfe47.site/data/images/3DBTG_logo.ico" alt="Terrain Generator preview" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'project-thumb-placeholder\'>3D</span>'">
+      </div>
+      <div class="project-body">
+        <span class="project-cat">Tools</span>
+        <h3 class="project-title">3D Bézier Terrain Generator</h3>
+        <p class="project-desc">Terrain editor using Bézier patches to generate smooth, continuous landscapes with live curvature control.</p>
+        <div class="project-tags">
+          <span class="tag">Bézier</span><span class="tag">Procedural</span><span class="tag">Editor</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="project-card" href="src/html/projects/multiplayer_asteriods_game.html">
+      <span class="project-arrow">↗</span>
+      <div class="project-thumb">
+        <img src="https://anderfe47.site/data/images/MAG_logo.ico" alt="Multiplayer Asteroids preview" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'project-thumb-placeholder\'>MP</span>'">
+      </div>
+      <div class="project-body">
+        <span class="project-cat">Networking</span>
+        <h3 class="project-title">Multiplayer Asteroids</h3>
+        <p class="project-desc">UDP-based multiplayer Asteroids supporting up to 4 players with custom networking protocol.</p>
+        <div class="project-tags">
+          <span class="tag">UDP</span><span class="tag">Networking</span><span class="tag">C++</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="project-card" href="src/html/projects/game_ai.html">
+      <span class="project-arrow">↗</span>
+      <div class="project-thumb">
+        <img src="https://anderfe47.site/data/images/GA_logo.ico" alt="Game AI preview" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'project-thumb-placeholder\'>AI</span>'">
+      </div>
+      <div class="project-body">
+        <span class="project-cat">AI / Algorithms</span>
+        <h3 class="project-title">Game AI</h3>
+        <p class="project-desc">Pathfinding with A* and JPS+, flow fields, and hierarchical state machines for autonomous agents.</p>
+        <div class="project-tags">
+          <span class="tag">A*</span><span class="tag">JPS+</span><span class="tag">FSM</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="project-card" href="src/html/projects/chip-8_emulator.html">
+      <span class="project-arrow">↗</span>
+      <div class="project-thumb">
+        <img src="https://anderfe47.site/data/images/C8E_logo.ico" alt="Chip-8 Emulator preview" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'project-thumb-placeholder\'>C8</span>'">
+      </div>
+      <div class="project-body">
+        <span class="project-cat">Systems</span>
+        <h3 class="project-title">Chip-8 Emulator</h3>
+        <p class="project-desc">Full Chip-8 emulator from scratch capable of running classic games like Pong with accurate opcode emulation.</p>
+        <div class="project-tags">
+          <span class="tag">Emulation</span><span class="tag">C++</span><span class="tag">Low-Level</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="project-card" href="src/html/projects/memory_manager.html">
+      <span class="project-arrow">↗</span>
+      <div class="project-thumb">
+        <img src="https://anderfe47.site/data/images/MM_logo.ico" alt="Memory Manager preview" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'project-thumb-placeholder\'>MM</span>'">
+      </div>
+      <div class="project-body">
+        <span class="project-cat">Systems</span>
+        <h3 class="project-title">Memory Manager</h3>
+        <p class="project-desc">Custom dynamic allocator handling allocation, deallocation, coalescing, and fragmentation tracking.</p>
+        <div class="project-tags">
+          <span class="tag">Allocator</span><span class="tag">C++</span><span class="tag">Systems</span>
+        </div>
+      </div>
+    </a>
+
+    <div class="project-card project-wip">
+      <div class="project-thumb">
+        <img src="https://anderfe47.site/data/images/WIP.ico" alt="WIP" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'project-thumb-placeholder\'>WIP</span>'">
+      </div>
+      <div class="project-body">
+        <span class="project-cat">In Progress</span>
+        <h3 class="project-title">AFL Vulkan 3D Engine</h3>
+        <p class="project-desc">Custom 3D engine transitioning from OpenGL to Vulkan — low-level GPU command recording.</p>
+        <div class="project-tags">
+          <span class="tag">Vulkan</span><span class="tag">WIP</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GAMES -->
+<section id="games">
+  <div class="section-header">
+    <span class="section-num">03 —</span>
+    <h2 class="section-title">Games</h2>
+  </div>
+  <div class="games-grid">
+
+    <a class="game-card" href="src/html/games/numbra.html">
+      <div class="game-thumb">
+        <img src="https://anderfe47.site/data/images/NUMBRA_logo.ico" alt="Numbra" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'project-thumb-placeholder\'>N</span>'">
+      </div>
+      <div class="game-body">
+        <span class="game-year">Senior Year</span>
+        <h3 class="game-title">Numbra</h3>
+        <p class="game-desc">3D puzzle game featuring immersive, tension-filled moments and atmospheric lighting.</p>
+        <div class="project-tags" style="margin-top:0.75rem; justify-content:center;">
+          <span class="tag">3D</span><span class="tag">Puzzle</span><span class="tag">C++</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="game-card" href="src/html/games/chaos4sale.html">
+      <div class="game-thumb">
+        <img src="https://anderfe47.site/data/images/WIP.ico" alt="Chaos 4 Sale" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'project-thumb-placeholder\'>C4</span>'">
+      </div>
+      <div class="game-body">
+        <span class="game-year">Junior Year</span>
+        <h3 class="game-title">Chaos 4 Sale</h3>
+        <p class="game-desc">High-energy game with chaotic mechanics and a custom engine built from scratch.</p>
+        <div class="project-tags" style="margin-top:0.75rem; justify-content:center;">
+          <span class="tag">Arcade</span><span class="tag">C++</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="game-card" href="src/html/games/virtualmayhem.html">
+      <div class="game-thumb">
+        <img src="https://anderfe47.site/data/images/VM_logo.ico" alt="Virtual Mayhem" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'project-thumb-placeholder\'>VM</span>'">
+      </div>
+      <div class="game-body">
+        <span class="game-year">Sophomore Year</span>
+        <h3 class="game-title">Virtual Mayhem</h3>
+        <p class="game-desc">2D virtual fighting game with unique characters, combos, and tight game-feel.</p>
+        <div class="project-tags" style="margin-top:0.75rem; justify-content:center;">
+          <span class="tag">2D</span><span class="tag">Fighter</span><span class="tag">C++</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- CAREER -->
+<section id="career">
+  <div class="section-header">
+    <span class="section-num">04 —</span>
+    <h2 class="section-title">Career path</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot filled"></div>
+      <div class="tl-date">Now — Open to work</div>
+      <div class="tl-role">Graphics / Engine Programmer</div>
+      <div class="tl-place">Seeking opportunities</div>
+      <div class="tl-desc">Looking for roles in graphics programming, game engine development, or real-time rendering — particularly in game studios or simulation companies.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot filled"></div>
+      <div class="tl-date">2020 – 2025</div>
+      <div class="tl-role">BSc Computer Science — Real-Time Interactive Simulation</div>
+      <div class="tl-place">DigiPen Institute of Technology Europe-Bilbao</div>
+      <div class="tl-desc">Five-year degree covering advanced C/C++, real-time rendering, game engine architecture, computer networks, game AI, and physics simulations. Built multiple projects and games from scratch each year.</div>
+      <div class="tl-tags">
+        <span class="tag">C++</span>
+        <span class="tag">OpenGL</span>
+        <span class="tag">Game Engine</span>
+        <span class="tag">Game AI</span>
+        <span class="tag">Networking</span>
+        <span class="tag">DigiPen</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">2020</div>
+      <div class="tl-role">High School Graduate</div>
+      <div class="tl-place">Bilbao, Spain</div>
+      <div class="tl-desc">Started specializing in mathematics and computer science, leading to enrollment at DigiPen.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">05 —</span>
+    <h2 class="section-title">Contact</h2>
+  </div>
+  <div class="contact-inner"> 
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:anderfe47@gmail.com">
+        <span class="contact-label">Email</span>
+        anderfe47@gmail.com
+      </a>
+      <a class="contact-link" href="https://github.com/anderfe47" target="_blank">
+        <span class="contact-label">GitHub</span>
+        github.com/anderfe47
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/anderfe47" target="_blank">
+        <span class="contact-label">LinkedIn</span>
+        linkedin.com/in/anderfe47
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Ander Fernandez Lafuente</span>
+  <span>Graphics & Systems Programmer</span>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => menu.classList.toggle('open'));
+  function closeMenu() { menu.classList.remove('open'); }
+</script>
+</body>
+</html>

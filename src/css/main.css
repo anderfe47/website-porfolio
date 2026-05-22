@@ -100,6 +100,7 @@ input, select, textarea {
 
 	body {
 		background: #252122;
+		color: #d1d5db;
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -1682,6 +1683,7 @@ input, select, textarea {
 		input[type="submit"]:hover,
 		input[type="reset"]:hover,
 		button:hover,
+		
 		.button:hover {
 			background: #e53359;
 		}
@@ -2109,39 +2111,39 @@ input, select, textarea {
 	}
 
 		#nav > ul {
-			margin: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		margin: 0;
+		padding: 0;
 		}
 
 			#nav > ul > li {
-				display: inline-block;
-				font-style: italic;
-				margin: 0 1em 0 0em;
+				list-style: none;
+				position: relative;
 			}
+ 
 
-				#nav > ul > li > ul {
-					display: none;
-				}
+				#nav > ul > li > a { 
 
-				#nav > ul > li > a {
-					border-radius: 5px;
-					color: #5d5d5d;
+					display: inline-block;
+					padding: 0.8rem 1.4rem;
+					border-radius: 12px;
 					text-decoration: none;
-					padding: 0.6em 1.2em 0.6em 1.2em;
-					-moz-transition: background-color .25s ease-in-out;
-					-webkit-transition: background-color .25s ease-in-out;
-					-ms-transition: background-color .25s ease-in-out;
-					transition: background-color .25s ease-in-out;
-					outline: 0;
+					color: #5d5d5d;
+					font-weight: 600;
+					transition: all 0.25s ease;
 				}
 
 				#nav > ul > li:hover > a, #nav > ul > li.active > a {
-					background: #f3f3f3;
+					background: #e1e1e1;
+					transform: translateY(-2px);
 				}
 
 				#nav > ul > li.current > a {
 					background: #d52349;
-					color: #fff !important;
-					font-weight: 700;
+					color: #fff !important; 
 				}
 
 	.dropotron {
@@ -2206,9 +2208,7 @@ input, select, textarea {
 	}
 
 	#banner header { 
-		display: inline-block;
-		padding: 10.0em 5em;
-		border-radius: 5px;
+	padding: 4rem 2rem;
 	}
 
 	#banner header h1 {
@@ -2226,10 +2226,9 @@ input, select, textarea {
 
 	#banner header p {
 		color: #d52349;
-		padding: 0;
-		font-style: normal;
+		padding: 0; 
 		margin: 0;
-		font-size: 1.5em;
+		font-size: 1.1rem;
 	}
 
 /* Intro */

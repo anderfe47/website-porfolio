@@ -18,284 +18,203 @@
 			<!-- Header -->
 			<section id="header">
 
-				<!-- Nav --> 
-				<nav id="nav">
-					<ul>
-						<li >
-							<a href="/src/html/games.html">GAMES</a>
-							<ul>
-								<li ><a href="/src/html/games/numbra.html">Numbra</a></li>
-								<li><a href="/src/html/games/chaos4sale.html">Chaos 4 sale</a></li>
-								<li><a href="/src/html/games/virtualmayhem.html">Virtual Mayhem</a></li>
-							</ul>
-						</li>
-			
-						<li ><a href="/index.html">ABOUT ME</a></li>
-			
-						<li class="current">
-							<a href="/src/html/projects.html">PROJECTS</a>
-							<ul>
-								<li>
-									<a href="#">Graphics</a>
-									<ul>
-										<li><a href="/src/html/projects/radiance_cancades.html">2D Radiance Cascades</a></li>
-										<li><a href="/src/html/projects/advanced_rendering_techniques.html">Advanced Rendering Techniques</a></li>
-										<li><a href="/src/html/projects/raytracing_for_csgs.html">Raytracing for CSGs</a></li>
-										<li><a href="/src/html/projects/space_partitioning.html">Space Partitioning</a></li>
-									</ul>
-								</li>
-								<li><a href="/src/html/projects/3d_bezier_terrain_generator.html">3D Bezier Terrain Generator</a></li>
-								<li><a href="/src/html/projects/multiplayer_asteriods_game.html">Multiplayer Asteroids Game</a></li>
-								<li><a href="/src/html/projects/game_ai.html">Game AI</a></li>
-								<li><a href="/src/html/projects/chip-8_emulator.html">Chip-8 emulator</a></li>
-								<li><a href="/src/html/projects/memory_manager.html">Memory Manager</a></li>
-							</ul>
-						</li>
-					</ul>
-				</nav> 
+				<!-- Nav -->
+				<div id="nav-container"></div>
 
-				<!-- Banner -->
-					<section id="banner">
-						<header>
-							<h2>PROJECTS</h2>
-							<p>This is a selection of projects I made during my degree.</p>
-							<p>Have a look by clicking the respective buttons ;)</p>
-						</header>
-					</section>
+				<script src="/src/js/nav.js"></script>
 
-					<!-- Intro -->
-						<section id="intro" class="container">
-							<div class="row">
-								<div class="col-12">
+				<script>
+					loadNav("projects");
+				</script>
 
-									<!-- Portfolio -->
-									<section>
-										<header class="major">
-											<h2>My Portfolio</h2>
-										</header>
-										<div class="row">
-											<div class="col-4 col-6-medium col-12-small">
-												<section class="box">
-													<img src="../../data/images/RC_logo.ico" alt="" /> 
-													<header>
-														<h3>2D Radiance Cascades</h3>
-													</header> 
-													<p>A real-time 2D global illumination system that simulates the penumbra condition using radiance cancades.</p>
-													<header></header>
-													<footer>
-														<ul class="actions">
-															<li><a href="projects/radiance_cancades.html" class="button alt">Find out more</a></li>
-														</ul>
-													</footer>
-												</section>
-											</div>
-											<div class="col-4 col-6-medium col-12-small">
-												<section class="box">
-													<img src="../../data/images/ART_logo.ico" alt="" />
-													<header>
-														<h3>Advanced Rendering Techniques</h3>
-													</header>
-													<p>A collection of rendering techniques including deferred rendering, cascaded shadows maps , post-processing effects and more.</p>
-													<header></header>
-													<footer>
-														<ul class="actions">
-															<li><a href="projects/advanced_rendering_techniques.html" class="button alt">Find out more</a></li>
-														</ul>
-													</footer>
-												</section>
-											</div>
-											<div class="col-4 col-6-medium col-12-small">
-												<section class="box">
-													<img src="../../data/images/CSG_logo.ico" alt="" />
-													<header>
-														<h3>Raytracing for CSGs</h3>
-													</header>
-													<p>Raytracing Constructive Solid Geometry Scenes. With accurate lighting, shadows, reflections and refractions.</p>
-													<header></header>
-													<footer>
-														<ul class="actions">
-															<li><a href="projects/raytracing_for_csgs.html" class="button alt">Find out more</a></li>
-														</ul>
-													</footer>
-												</section>
-											</div>
-											<div class="col-4 col-6-medium col-12-small">
-												<section class="box">
-													<img src="../../data/images/SP_logo.ico" alt="" />
-													<header>
-														<h3>Space Partitioning</h3>
-													</header>
-													<p>Several spatial data structures like BVH and octrees used to optimize scene rendering and collision detection.</p>
-													<header></header>
-													<footer>
-														<ul class="actions">
-															<li><a href="projects/space_partitioning.html" class="button alt">Find out more</a></li>
-														</ul>
-													</footer>
-												</section>
-											</div>
-											<div class="col-4 col-6-medium col-12-small">
-												<section class="box">
-													<img src="../../data/images/3DBTG_logo.ico" alt="" />
-													<header>
-														<h3>3D Bezier Terrain Generator</h3>
-													</header>
-													<p>A terrain editor that uses Bézier patches to generate smooth and continuous landscapes with control over surface curvature. </p>
-													<header></header>
-													<footer>
-														<ul class="actions">
-															<li><a href="projects/3d_bezier_terrain_generator.html" class="button alt">Find out more</a></li>
-														</ul>
-													</footer>
-												</section>
-											</div>
-											<div class="col-4 col-6-medium col-12-small">
-												<section class="box">
-													<img src="../../data/images/MAG_logo.ico" alt="" />
-													<header>
-														<h3>Multiplayer Game</h3>
-													</header>
-													<p>Implemented UDP-based protocols to enable online multiplayer for an Asteroids game, supporting up to 4 players.</p>
-													<header></header>
-													<footer>
-														<ul class="actions">
-															<li><a href="projects/multiplayer_asteriods_game.html" class="button alt">Find out more</a></li>
-														</ul>
-													</footer>
-												</section>
-											</div>
-											<div class="col-4 col-6-medium col-12-small">
-												<section class="box">
-													<img src="../../data/images/GA_logo.ico" alt="" />
-													<header>
-														<h3>Game AI</h3>
-													</header><p>Developed pathfinding algorithms (A*, JPS+) and field analysis, including state machines to manage AI behavior.</p>
-													<header></header>
-													<footer>
-														<ul class="actions">
-															<li><a href="projects/game_ai.html" class="button alt">Find out more</a></li>
-														</ul>
-													</footer>
-												</section>
-											</div>
-											<div class="col-4 col-6-medium col-12-small">
-												<section class="box">
-													<img src="../../data/images/C8E_logo.ico" alt="" />
-													<header>
-														<h3>Chip-8 Emulator</h3>
-													</header>
-													<p style="white-space: pre-line">Created Chip-8 emulator from scrath, capable of running classic games like Pong.
-														
-													</p>
-													<header></header>
-													<footer>
-														<ul class="actions">
-															<li><a href="projects/chip-8_emulator.html" class="button alt">Find out more</a></li>
-														</ul>
-													</footer>
-												</section>
-											</div>
-											<div class="col-4 col-6-medium col-12-small">
-												<section class="box">
-													<img src="../../data/images/MM_logo.ico" alt="" />
-													<header>
-														<h3>Memory manager</h3>
-													</header>
-													<p style="white-space: pre-line">Implemented custom memory manager to handle dynamic allocation, deallocation, and fragmentation.
-														
-													</p>
-													<header></header>
-													<footer>
-														<ul class="actions">
-															<li><a href="projects/memory_manager.html" class="button alt">Find out more</a></li>
-														</ul>
-													</footer>
-												</section>
-											</div>
-											<div class="col-4 col-6-medium col-12-small">
-												<section class="box">
-													<img src="../../data/images/WIP.ico" alt="" />
-													<header>
-														<h3>AFL Vulkan 3D Engine</h3>
-													</header>
-													<p style="white-space: pre-line">Working on a simple 3D custom engine to jump from OpenGl to Vulkan.</p>
-													<!--<header></header>
-													<footer>
-														<ul class="actions">
-															<li><a href="projects/afl_vulkan_engine.html" class="button alt">Find out more</a></li>
-														</ul>
-													</footer>-->
-												</section> 
-											</div>
-											<div class="col-4 col-6-medium col-12-small">
-												<section class="box">
-													<img src="../../data/images/WIP.ico" alt="" /> 
-											</div>
-
-											<div class="col-4 col-6-medium col-12-small">
-												<section class="box">
-													<img src="../../data/images/WIP.ico" alt="" /> 
-												</section> 
-											</div> 
-										</div>
-									</section>
-	
-								</div>
-							</div>
-						</section>
-
+				 <!-- Banner -->
+				<section id="banner">
+					<header>
+						<h2>PROJECTS</h2>
+						<p>This is a selection of projects I made during my degree.</p>
+						<p>Have a look by clicking the respective buttons ;)</p>
+					</header>
 				</section>
 
-			<!-- Main -->
-				<section id="main">
-					<div class="container">
-						<div class="row">
-							<div class="col-12">
+				<!-- Intro -->
+				<section id="intro" class="container">
 
-								<!-- Blog -->
-									<section>
-										<header class="major">
-											<h2>Some Games</h2>
-										</header>
-										<div class="row">
-											<div class="col-6 col-12-small">
-												<section class="box">
-													<img src="../../data/images/NUMBRA_logo.ico" alt="" />
-													<header>
-														<h3>Numbra</h3>
-														<p>Senior year game.</p>
-													</header>
-													<p>3D puzzle game, featuring immersive tension-filled moments.</p>
-													<footer>
-														<ul class="actions">
-															<li><a href="../html/games/numbra.html" class="button icon solid fa-file-alt">Continue Reading</a></li> 
-														</ul>
-													</footer>
-												</section>
-											</div>
-											<div class="col-6 col-12-small">
-												<section class="box">
-													<img src="../../data/images/VM_logo.ico" alt="" />
-													<header>
-														<h3>Virtual Mayhem</h3>
-														<p>Sophomore year game.</p>
-													</header>
-													<p>2D virtual fighting game with combos and unique characters.</p>
-													<footer>
-														<ul class="actions">
-															<li><a href="../html/games/virtualmayhem.html" class="button icon solid fa-file-alt">Continue Reading</a></li> 
-														</ul>
-													</footer>
-												</section>
-											</div>
-										</div>
-									</section>
-
-							</div>
+					<!-- Row 1-->
+					<div class="row">
+						<div class="col-4 col-12-medium">
+							<section class="first">
+									<img src="../../data/images/RC_logo.ico" alt="" /> 
+								<header>
+									<h3>2D Radiance Cascades</h3>
+								</header> 
+								<p>A real-time 2D global illumination system that simulates the penumbra condition using radiance cancades.</p>
+								<footer>
+									<ul class="actions">
+										<li><a href="projects/radiance_cancades.html" class="button alt">Find out more</a></li>
+									</ul>
+								</footer>
+							</section>
+						</div> 
+						<div class="col-4 col-12-medium">
+							<section class="middle">
+								<img src="../../data/images/ART_logo.ico" alt="" />
+								<header>
+									<h3>Advanced Rendering Techniques</h3>
+								</header>
+								<p>A collection of rendering techniques including deferred rendering, cascaded shadows maps , post-processing effects and more.</p>
+								<header></header>
+								<footer>
+									<ul class="actions">
+										<li><a href="projects/advanced_rendering_techniques.html" class="button alt">Find out more</a></li>
+									</ul>
+								</footer>
+							</section>
+						</div> 
+						<div class="col-4 col-12-medium">
+							<section class="last">
+								<img src="../../data/images/CSG_logo.ico" alt="" />
+								<header>
+									<h3>Raytracing for CSGs</h3>
+								</header>
+								<p>Raytracing Constructive Solid Geometry Scenes. With accurate lighting, shadows, reflections and refractions.</p>
+								<header></header>
+								<footer>
+									<ul class="actions">
+										<li><a href="projects/raytracing_for_csgs.html" class="button alt">Find out more</a></li>
+									</ul>
+								</footer>
+							</section>
 						</div>
 					</div>
+					<!-- Row 2-->
+					<div class="row">
+						<div class="col-4 col-12-medium">
+							<section class="first">
+										<img src="../../data/images/SP_logo.ico" alt="" />
+										<header>
+											<h3>Space Partitioning</h3>
+										</header>
+										<p>Several spatial data structures like BVH and octrees used to optimize scene rendering and collision detection.</p>
+										<header></header>
+										<footer>
+											<ul class="actions">
+												<li><a href="projects/space_partitioning.html" class="button alt">Find out more</a></li>
+											</ul>
+										</footer> 
+							</section>
+						</div> 
+						<div class="col-4 col-12-medium">
+							<section class="middle"> 
+										<img src="../../data/images/3DBTG_logo.ico" alt="" />
+										<header>
+											<h3>3D Bezier Terrain Generator</h3>
+										</header>
+										<p>A terrain editor that uses Bézier patches to generate smooth and continuous landscapes with control over surface curvature. </p>
+										<header></header>
+										<footer>
+											<ul class="actions">
+												<li><a href="projects/3d_bezier_terrain_generator.html" class="button alt">Find out more</a></li>
+											</ul>
+										</footer>
+							</section>
+						</div> 
+						<div class="col-4 col-12-medium">
+							<section class="last"> 
+										<img src="../../data/images/MAG_logo.ico" alt="" />
+										<header>
+											<h3>Multiplayer Game</h3>
+										</header>
+										<p>Implemented UDP-based protocols to enable online multiplayer for an Asteroids game, supporting up to 4 players.</p>
+										<header></header>
+										<footer>
+											<ul class="actions">
+												<li><a href="projects/multiplayer_asteriods_game.html" class="button alt">Find out more</a></li>
+											</ul>
+										</footer>
+							</section>
+						</div>
+					</div>
+					<!-- Row 3-->
+					<div class="row">
+						<div class="col-4 col-12-medium">
+							<section class="first"> 
+										<img src="../../data/images/GA_logo.ico" alt="" />
+										<header>
+											<h3>Game AI</h3>
+										</header><p>Developed pathfinding algorithms (A*, JPS+) and field analysis, including state machines to manage AI behavior.</p>
+										<header></header>
+										<footer>
+											<ul class="actions">
+												<li><a href="projects/game_ai.html" class="button alt">Find out more</a></li>
+											</ul>
+										</footer>
+							</section>
+						</div> 
+						<div class="col-4 col-12-medium">
+							<section class="middle"> 
+										<img src="../../data/images/C8E_logo.ico" alt="" />
+										<header>
+											<h3>Chip-8 Emulator</h3>
+										</header>
+										<p style="white-space: pre-line">Created Chip-8 emulator from scrath, capable of running classic games like Pong.
+											
+										</p>
+										<header></header>
+										<footer>
+											<ul class="actions">
+												<li><a href="projects/chip-8_emulator.html" class="button alt">Find out more</a></li>
+											</ul>
+										</footer>
+							</section>
+						</div> 
+						<div class="col-4 col-12-medium">
+							<section class="last"> 
+										<img src="../../data/images/MM_logo.ico" alt="" />
+										<header>
+											<h3>Memory manager</h3>
+										</header>
+										<p style="white-space: pre-line">Implemented custom memory manager to handle dynamic allocation, deallocation, and fragmentation.
+											
+										</p>
+										<header></header>
+										<footer>
+											<ul class="actions">
+												<li><a href="projects/memory_manager.html" class="button alt">Find out more</a></li>
+											</ul>
+										</footer>
+							</section>
+						</div>
+					</div>
+					
+					<!-- Row 4-->
+					<div class="row">
+						<div class="col-4 col-12-medium">
+							<section class="first"> 
+							</section>
+						</div> 
+						<div class="col-4 col-12-medium">
+							<section class="middle"> 
+										<img src="../../data/images/WIP.ico" alt="" />
+										<header>
+											<h3>AFL Vulkan 3D Engine</h3>
+										</header>
+										<p style="white-space: pre-line">Working on a simple 3D custom engine to jump from OpenGl to Vulkan.</p>
+										<header></header>
+										<footer>
+											<ul class="actions">
+												<li><a href="https://github.com/anderfe47/AFL_3D_Engine" class="button alt">Find out more</a></li>
+											</ul>
+										</footer>
+							</section>
+						</div> 
+						<div class="col-4 col-12-medium">
+							<section class="last"> 
+							</section>
+						</div>
+					</div>  
 				</section>
-
+			</section>
+ 
 			<!-- Footer -->
   			<div id="footer-container"></div>
 

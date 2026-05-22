@@ -1,34 +1,46 @@
 function loadNav(currentPage) {
-  fetch('/src/html/nav.html')
-    .then(res => res.text())
-    .then(html => {
-      const tempContainer = document.createElement("div");
-      tempContainer.innerHTML = html;
 
-      const template = tempContainer.querySelector("#nav-template");
-      const clone = template.content.cloneNode(true);
+	fetch('/src/html/nav.html')
+		.then(response => response.text())
+		.then(html => {
 
-      const navContainer = document.getElementById("nav-container");
-      navContainer.innerHTML = "";
-      navContainer.appendChild(clone);
+			const temp = document.createElement('div');
+			temp.innerHTML = html;
 
-      // Apply the "current" class
-      const navItems = navContainer.querySelectorAll('[data-page]');
-      navItems.forEach(item => {
-        if (item.dataset.page === currentPage) {
-          item.classList.add("current");
-        }
-      });
+			const template = temp.querySelector('#nav-template');
 
-      // Re-initialize Dropotron dropdown menu every time the nav is inserted
-      setTimeout(() => {
-        $('#nav > ul').dropotron({
-          mode: 'fade',
-          noOpenerFade: true,
-          alignment: 'center'
-        });
-      }, 0); // Ensure it's applied right after the nav is inserted
+			const navContainer = document.getElementById('nav-container');
 
-    })
-    .catch(err => console.error("Error loading nav:", err));
+			navContainer.innerHTML = '';
+
+			navContainer.appendChild(
+				template.content.cloneNode(true)
+			);
+
+			// Highlight current page
+			const items = navContainer.querySelectorAll('[data-page]');
+
+			items.forEach(item => {
+
+				if (item.dataset.page === currentPage)
+					item.classList.add('current');
+
+			});
+
+			// Reinitialize Dropotron
+			setTimeout(() => {
+
+				$('#nav > ul').dropotron({
+					mode: 'fade',
+					noOpenerFade: true,
+					alignment: 'center'
+				});
+
+			}, 0);
+
+		})
+		.catch(error => {
+			console.error('Error loading nav:', error);
+		});
+
 }
